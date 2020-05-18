@@ -167,11 +167,11 @@ def main(args):
 					model.apply(svd_orthogonalization)
 
 				# Log the scalar values
-				writer.add_scalar('loss', loss.data[0], training_params['step'])
+				writer.add_scalar('loss', loss.item(), training_params['step'])
 				writer.add_scalar('PSNR on training data', psnr_train, \
 					  training_params['step'])
 				print("[epoch %d][%d/%d] loss: %.4f PSNR_train: %.4f" %\
-					(epoch+1, i+1, len(loader_train), loss.data[0], psnr_train))
+					(epoch+1, i+1, len(loader_train), loss.item(), psnr_train))
 			training_params['step'] += 1
 		# The end of each epoch
 		model.eval()
